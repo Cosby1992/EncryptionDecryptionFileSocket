@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EncryptionGuiController">
+   <children>
+      <JFXButton fx:id="btn_pick_file" layoutX="14.0" layoutY="356.0" onAction="#pickFile" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Vælg Fil" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXTextArea labelFloat="true" layoutX="15.0" layoutY="23.0" prefHeight="325.0" prefWidth="267.0" promptText="Ukrypteret fil inhold" />
+      <JFXTextArea layoutX="282.0" layoutY="23.0" prefHeight="325.0" prefWidth="305.0" promptText="Krypteret fil indhold" />
+   </children>
+</AnchorPane>
