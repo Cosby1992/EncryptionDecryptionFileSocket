@@ -2,18 +2,31 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EncryptionGuiController">
+<AnchorPane prefHeight="400.0" prefWidth="691.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EncryptionGuiController">
    <children>
-      <JFXButton fx:id="btn_pick_file" layoutX="14.0" layoutY="356.0" onAction="#pickFile" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Vælg Fil" textFill="WHITE">
+      <JFXButton fx:id="btn_pick_file" focusTraversable="false" layoutX="550.0" layoutY="23.0" onAction="#pickFile" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Vælg Fil" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextArea labelFloat="true" layoutX="15.0" layoutY="23.0" prefHeight="325.0" prefWidth="267.0" promptText="Ukrypteret fil inhold" />
-      <JFXTextArea layoutX="282.0" layoutY="23.0" prefHeight="325.0" prefWidth="305.0" promptText="Krypteret fil indhold" />
+      <JFXTextArea fx:id="ta_unencrypted" editable="false" labelFloat="true" layoutX="14.0" layoutY="61.0" prefHeight="325.0" prefWidth="255.0" promptText="Ukrypteret fil inhold" style="-fx-text-inner-color: white;" />
+      <JFXTextArea fx:id="ta_encrypted" editable="false" labelFloat="true" layoutX="282.0" layoutY="61.0" prefHeight="325.0" prefWidth="255.0" promptText="Krypteret fil indhold" style="-fx-text-inner-color: white;" />
+      <JFXButton fx:id="btn_connect_to_server" layoutX="550.0" layoutY="339.0" onAction="#connect_to_server" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Tilslut Server" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lb_chosen_file" layoutX="14.0" layoutY="15.0" text="Du har ikke valgt en fil endnu" textFill="WHITE" />
+      <Label fx:id="lb_server_connected" layoutX="550.0" layoutY="369.0" text="Ikke tilsluttet server..." textFill="WHITE" />
+      <JFXButton fx:id="btn_encrypt_file" layoutX="550.0" layoutY="76.0" onAction="#encryptFile" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Kryptér Fil" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

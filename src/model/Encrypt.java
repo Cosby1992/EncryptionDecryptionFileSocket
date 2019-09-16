@@ -74,7 +74,6 @@ public class Encrypt {
             return key[pos++];
         }
 
-
     }
 
 

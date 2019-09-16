@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ServerGuiController">
+   <children>
+      <JFXTextArea fx:id="ta_decrypted_file" labelFloat="true" layoutX="14.0" layoutY="72.0" prefHeight="314.0" prefWidth="217.0" promptText="Ukrypteret Fil Inhold" />
+      <JFXTextArea fx:id="ta_encrypted_file" labelFloat="true" layoutX="247.0" layoutY="72.0" prefHeight="314.0" prefWidth="217.0" promptText="Krypteret Fil Indhold" />
+      <Label fx:id="lb_filename" layoutX="14.0" layoutY="14.0" text="Venter på fil fra klient" />
+      <JFXButton fx:id="btn_start_server" buttonType="RAISED" layoutX="472.0" layoutY="361.0" onAction="#startServer" prefHeight="25.0" prefWidth="114.0" ripplerFill="#a4a4a4" text="Start Server" />
+      <JFXButton fx:id="btn_decrypt" buttonType="RAISED" layoutX="472.0" layoutY="60.0" onAction="#decryptFile" prefHeight="25.0" prefWidth="114.0" text="Dekrypter Fil" />
+      <Label fx:id="lb_server_start" layoutX="472.0" layoutY="344.0" text="Serveren er ikke startet" />
+   </children>
+</AnchorPane>
