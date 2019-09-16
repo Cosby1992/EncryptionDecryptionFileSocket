@@ -28,5 +28,10 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
+      <JFXButton fx:id="btn_send_file" layoutX="550.0" layoutY="126.0" onAction="#sendFile" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Send Fil" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -4,7 +4,10 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import model.Encrypt;
 import model.FileUtils;
 import server.Server;
@@ -22,6 +25,8 @@ public class ServerGuiController implements Server.ServerListener {
     private byte[] filebytes = null;
     private String filename = "";
 
+    private boolean decrypted = false;
+
     public void startServer(ActionEvent actionEvent) {
 
         new Thread(new Server(this)).start();
@@ -32,15 +37,52 @@ public class ServerGuiController implements Server.ServerListener {
 
         if(filebytes != null){
             updateTaDecrypted();
+            decrypted = true;
         } else {
             ta_decrypted_file.setText("Ingen Fil at Dekryptere");
         }
 
     }
 
+    public void saveFile(ActionEvent actionEvent) {
+
+        if(decrypted){
+            Window window = ((Node) actionEvent.getTarget()).getScene().getWindow();
+
+            FileChooser chooser = new FileChooser();
+
+            chooser.setTitle("Vælg placering");
+            chooser.setInitialFileName(filename);
+
+            File file = chooser.showSaveDialog(window);
+
+            if(file != null){
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            FileUtils.writeToFile(file.getPath(), filebytes);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            } else {
+                lb_filename.setText("No location added");
+            }
+        } else {
+            lb_filename.setText("Dekrypter filen før du kan gemme.");
+        }
+
+
+    }
+
+
+
     @Override
     public void updateTaEncrypted(String filename, byte[] filebytes) {
         this.filename = filename;
+        this.filebytes = filebytes;
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -60,7 +102,7 @@ public class ServerGuiController implements Server.ServerListener {
                 if(filebytes != null){
                     Encrypt encrypt = new Encrypt();
                     try {
-                        byte[] bytes = encrypt.cosDecrypt(new File(filename));
+                        byte[] bytes = encrypt.cosDecrypt(filebytes);
                         ta_decrypted_file.setText(FileUtils.getStringFromByteArray(bytes));
 
                     } catch (IOException e) {
@@ -71,5 +113,6 @@ public class ServerGuiController implements Server.ServerListener {
             }
         });
     }
+
 
 }

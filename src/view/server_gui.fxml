@@ -14,5 +14,6 @@
       <JFXButton fx:id="btn_start_server" buttonType="RAISED" layoutX="472.0" layoutY="361.0" onAction="#startServer" prefHeight="25.0" prefWidth="114.0" ripplerFill="#a4a4a4" text="Start Server" />
       <JFXButton fx:id="btn_decrypt" buttonType="RAISED" layoutX="472.0" layoutY="60.0" onAction="#decryptFile" prefHeight="25.0" prefWidth="114.0" text="Dekrypter Fil" />
       <Label fx:id="lb_server_start" layoutX="472.0" layoutY="344.0" text="Serveren er ikke startet" />
+      <JFXButton fx:id="btn_save_file" layoutX="472.0" layoutY="95.0" onAction="#saveFile" prefHeight="25.0" prefWidth="114.0" text="Gem Fil" />
    </children>
 </AnchorPane>

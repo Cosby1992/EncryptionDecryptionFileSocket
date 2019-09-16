@@ -13,8 +13,6 @@ public class Server implements Runnable {
     }
 
     private final int PORT = 666;
-
-    private byte[] fileBytes = null;
     private ServerListener listener;
 
     public Server(ServerListener listener) {

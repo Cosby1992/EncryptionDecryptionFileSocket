@@ -37,9 +37,7 @@ public class Encrypt {
 
     }
 
-    public byte[] cosDecrypt(File file) throws IOException {
-
-        byte[] fileBytes = Files.readAllBytes(file.toPath());
+    public byte[] cosDecrypt(byte[] fileBytes) throws IOException {
 
         System.out.print("Filebytes: ");
         for (byte b : fileBytes) {

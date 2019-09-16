@@ -1,5 +1,6 @@
 package view;
 
+import client.Client;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class EncryptionGuiController {
     @FXML Label lb_server_connected;
 
     private File file = null;
+    private Client client = null;
+    private byte[] encryptedFilebytes = null;
 
 
     public void pickFile(ActionEvent actionEvent) {
@@ -61,7 +64,27 @@ public class EncryptionGuiController {
 
     public void connect_to_server(ActionEvent actionEvent) {
 
-        //TODO: connect to server here
+        if(client == null){
+            client = new Client();
+            new Thread(client).start();
+        }
+
+
+    }
+
+
+    public void sendFile(ActionEvent actionEvent) {
+
+        if(client != null && file != null){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    client.sendFile(file.getName(), encryptedFilebytes);
+
+                }
+            }).start();
+        }
 
     }
 
@@ -79,6 +102,7 @@ public class EncryptionGuiController {
                 public void run() {
                     try {
                         byte[] bytes = encrypt.cosEncrypt(file);
+                        encryptedFilebytes = bytes;
 
                         String s = FileUtils.getStringFromByteArray(bytes);
 
@@ -97,4 +121,5 @@ public class EncryptionGuiController {
 
 
     }
+
 }
