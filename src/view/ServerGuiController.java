@@ -15,7 +15,6 @@ import server.Server;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 
 public class ServerGuiController implements Server.ServerListener {
 
@@ -83,7 +82,6 @@ public class ServerGuiController implements Server.ServerListener {
             lb_filename.setText("Dekrypter filen før du kan gemme.");
         }
 
-
     }
 
 
@@ -131,15 +129,11 @@ public class ServerGuiController implements Server.ServerListener {
             @Override
             public void run() {
                 if(filebytes != null){
-                    Encrypt encrypt = new Encrypt();
-                    try {
-                        byte[] bytes = encrypt.cosDecrypt(filebytes);
-                        ta_decrypted_file.setText(FileUtils.getStringFromByteArray(bytes));
 
-                    } catch (IOException e) {
-                        ta_decrypted_file.setText("Kunne ikke dekryptere filen");
-                        e.printStackTrace();
-                    }
+                    Encrypt encrypt = new Encrypt();
+                    byte[] bytes = encrypt.cosDecrypt(filebytes);
+                    ta_decrypted_file.setText(FileUtils.getStringFromByteArray(bytes));
+
                 }
             }
         });

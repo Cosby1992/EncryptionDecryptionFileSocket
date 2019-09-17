@@ -11,6 +11,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        //launches client and server window (from fxml files) and their controllers
+
         Stage stage = new Stage();
 
         Parent rootServer = FXMLLoader.load(getClass().getResource("../view/server_gui.fxml"));
