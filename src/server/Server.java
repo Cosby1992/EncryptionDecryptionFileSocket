@@ -87,7 +87,7 @@ public class Server implements Runnable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
+
     }
 
 }
