@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import model.Encrypt;
@@ -14,9 +15,11 @@ import server.Server;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 public class ServerGuiController implements Server.ServerListener {
 
+    @FXML Label lb_client_connected;
     @FXML Label lb_server_start;
     @FXML Label lb_filename;
     @FXML JFXTextArea ta_encrypted_file;
@@ -35,12 +38,18 @@ public class ServerGuiController implements Server.ServerListener {
 
     public void decryptFile(ActionEvent actionEvent) {
 
-        if(filebytes != null){
-            updateTaDecrypted();
-            decrypted = true;
-        } else {
-            ta_decrypted_file.setText("Ingen Fil at Dekryptere");
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(filebytes != null){
+                    updateTaDecrypted();
+                    decrypted = true;
+                } else {
+                    ta_decrypted_file.setText("Ingen Fil at Dekryptere");
+                }
+            }
+        }).start();
+
 
     }
 
@@ -94,6 +103,28 @@ public class ServerGuiController implements Server.ServerListener {
             }
         });
     }
+
+    @Override
+    public void updateServerStarted(String update) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                lb_server_start.setText(update);
+            }
+        });
+    }
+
+    @Override
+    public void updateClientConnected(String update, String color) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                lb_client_connected.setTextFill(Paint.valueOf(color));
+                lb_client_connected.setText(update);
+            }
+        });
+    }
+
 
     private void updateTaDecrypted(){
         Platform.runLater(new Runnable() {

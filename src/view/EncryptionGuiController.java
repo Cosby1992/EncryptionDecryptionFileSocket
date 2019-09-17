@@ -2,6 +2,7 @@ package view;
 
 import client.Client;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,8 +14,9 @@ import model.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
-public class EncryptionGuiController {
+public class EncryptionGuiController implements Client.ClientListener {
 
     @FXML JFXTextArea ta_unencrypted;
     @FXML JFXTextArea ta_encrypted;
@@ -65,7 +67,7 @@ public class EncryptionGuiController {
     public void connect_to_server(ActionEvent actionEvent) {
 
         if(client == null){
-            client = new Client();
+            client = new Client(this);
             new Thread(client).start();
         }
 
@@ -122,4 +124,15 @@ public class EncryptionGuiController {
 
     }
 
+    @Override
+    public void updateClientStartet(Date date) {
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                lb_server_connected.setText(date.toString());
+            }
+        });
+
+    }
 }

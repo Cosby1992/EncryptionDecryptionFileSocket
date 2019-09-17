@@ -14,15 +14,15 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXTextArea fx:id="ta_unencrypted" editable="false" labelFloat="true" layoutX="14.0" layoutY="61.0" prefHeight="325.0" prefWidth="255.0" promptText="Ukrypteret fil inhold" style="-fx-text-inner-color: white;" />
-      <JFXTextArea fx:id="ta_encrypted" editable="false" labelFloat="true" layoutX="282.0" layoutY="61.0" prefHeight="325.0" prefWidth="255.0" promptText="Krypteret fil indhold" style="-fx-text-inner-color: white;" />
-      <JFXButton fx:id="btn_connect_to_server" layoutX="550.0" layoutY="339.0" onAction="#connect_to_server" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Tilslut Server" textFill="WHITE">
+      <JFXTextArea fx:id="ta_unencrypted" editable="false" labelFloat="true" layoutX="14.0" layoutY="61.0" prefHeight="293.0" prefWidth="255.0" promptText="Ukrypteret fil inhold" style="-fx-text-inner-color: white;" />
+      <JFXTextArea fx:id="ta_encrypted" editable="false" labelFloat="true" layoutX="282.0" layoutY="61.0" prefHeight="293.0" prefWidth="255.0" promptText="Krypteret fil indhold" style="-fx-text-inner-color: white;" />
+      <JFXButton fx:id="btn_connect_to_server" layoutX="14.0" layoutY="363.0" onAction="#connect_to_server" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Tilslut Server" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
       <Label fx:id="lb_chosen_file" layoutX="14.0" layoutY="15.0" text="Du har ikke valgt en fil endnu" textFill="WHITE" />
-      <Label fx:id="lb_server_connected" layoutX="550.0" layoutY="369.0" text="Ikke tilsluttet server..." textFill="WHITE" />
+      <Label fx:id="lb_server_connected" layoutX="142.0" layoutY="370.0" textFill="WHITE" />
       <JFXButton fx:id="btn_encrypt_file" layoutX="550.0" layoutY="76.0" onAction="#encryptFile" prefHeight="30.0" prefWidth="122.0" ripplerFill="#009708" style="-fx-background-color: #171717;" text="Kryptér Fil" textFill="WHITE">
          <font>
             <Font size="14.0" />
