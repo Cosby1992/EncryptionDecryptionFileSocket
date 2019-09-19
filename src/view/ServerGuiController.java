@@ -52,6 +52,8 @@ public class ServerGuiController implements Server.ServerListener {
                 @Override
                 public void run() {
                     if(filebytes != null){
+                        Encrypt encrypt = new Encrypt();
+                        filebytes = encrypt.cosDecrypt(filebytes);
                         updateTaDecrypted();
                         decrypted = true;
                     } else {
@@ -155,9 +157,7 @@ public class ServerGuiController implements Server.ServerListener {
             public void run() {
                 if(filebytes != null){
 
-                    Encrypt encrypt = new Encrypt();
-                    byte[] bytes = encrypt.cosDecrypt(filebytes);
-                    ta_decrypted_file.setText(FileUtils.getStringFromByteArray(bytes));
+                    ta_decrypted_file.setText(FileUtils.getStringFromByteArray(filebytes));
 
                 }
             }
